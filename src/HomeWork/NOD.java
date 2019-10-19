@@ -1,4 +1,4 @@
-package Lesson2;
+package HomeWork;
 
 import java.util.Scanner;
 
@@ -20,7 +20,7 @@ public class NOD {
         for (int i = 1; ; i++) {
             if (a > b) {
                 if (a % b == 0) {
-                    System.out.println("НОД " + b);
+                    System.out.println("НОД = " + b);
                     break;
                 }
                 else if (a % b != 0) {
@@ -29,7 +29,7 @@ public class NOD {
             }
             else {
                 if (b % a == 0) {
-                    System.out.println("НОД " + a);
+                    System.out.println("НОД = " + a);
                     break;
                 }
                 else {

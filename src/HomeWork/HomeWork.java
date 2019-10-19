@@ -1,4 +1,4 @@
-package Lesson2;
+package HomeWork;
 
 //написать программу перевода числа из 10 системы исчисления в двоичную, шестнадцатиричную, реализовать на языке программирования
 //можно разделить на 2 метода
@@ -30,7 +30,7 @@ public class HomeWork {
 
 
 
-    public static void sixteenary (){
+    public static void hexadecimal (){
         Scanner scn = new Scanner(System.in);
         System.out.println("Введите число для перевода в шестнадцатеричную систему ");
         int a = scn.nextInt();
@@ -41,7 +41,7 @@ public class HomeWork {
             value = b + " " + value;
             a = a/16;
         }
-        String [] str = value.split(" ");         //создаю новый массив, путем разделения строки стринг, в скобках - лриентир разделения
+        String [] str = value.split(" ");         //создаю новый массив, путем разделения строки стринг, в скобках - ориентир разделения
         String [] str1 = {"10","11","12","13","14","15"}; //второй массив с числами, которые необходимо заменить на буквы 16-ной системы
         for (int i = 0; i <str.length ; i++) {            //пробегаюсь по массиву, для изменения через for значений
             if (str[i].equals(str1[0])){
@@ -71,7 +71,8 @@ public class HomeWork {
 
 
     public static void main(String[] args) {
-        //binary ();
-        sixteenary();
+        binary ();
+        System.out.println();
+        hexadecimal();
     }
 }
