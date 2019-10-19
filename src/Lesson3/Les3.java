@@ -1,6 +1,6 @@
 package Lesson3;
 
-//на гитхабе посмотреть в первом лесоне по свитчу в
+//на гитхабе посмотреть в первом лесоне по свитчу нововведения
 
 import java.util.Arrays;
 import java.util.StringJoiner;

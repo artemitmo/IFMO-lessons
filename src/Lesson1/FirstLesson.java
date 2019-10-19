@@ -1,5 +1,4 @@
 package Lesson1;
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 
 import java.util.Scanner;
 
@@ -157,16 +156,12 @@ public class FirstLesson {
 
         //Конструкция свитч
         switch (scanner.nextInt()){
-            case 1:
+            case 1 ->
                 System.out.println("Var1");
-                break; //выполняется либо до первого брейка, либо до конца конструкции
-            case 2:
-                System.out.println("Var2");
-                break;
-            case 3: //объединение кейсов
-            case 4:
-                System.out.println("Var3 and 4");
-            default: //выполняется по умолчанию
+                //выполняется либо до первого брейка, либо до конца конструкции
+            case 2 -> System.out.println("Var2");
+            case 3, 4 -> System.out.println("Var3 and 4");
+            default -> //выполняется по умолчанию
                 System.out.println("Не определен"); // брейк можно не ставить
         }
 
