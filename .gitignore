@@ -1,4 +1,4 @@
 # Project exclude paths
-/out/
-/.idea/
-/javaApp.iml/
+out/
+.idea/
+javaApp.iml/
