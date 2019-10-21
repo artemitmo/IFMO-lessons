@@ -1,5 +1,4 @@
-package HomeWork;
-
+package HomeWork.firstPush;
 import java.util.Scanner;
 
 public class NOD {

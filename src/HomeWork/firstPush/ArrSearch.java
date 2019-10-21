@@ -1,6 +1,4 @@
-package HomeWork;
-
-import java.util.Arrays;
+package HomeWork.firstPush;
 
 public class ArrSearch {
     public static void main ( String[] args ) {
