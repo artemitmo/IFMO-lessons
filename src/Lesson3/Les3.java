@@ -110,9 +110,10 @@ public class Les3 {
             Строка "в кавычках"
             с переносами
         """;
-
-
          */
+        System.out.println('a' + 'a');
+        System.out.println('a' - 'a');
+        System.out.println(- 'c');
     }
 
 }

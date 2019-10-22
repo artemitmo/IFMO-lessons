@@ -54,7 +54,7 @@ public class RegExpress {
         System.out.println(matcher.find());
         while (matcher.find()) System.out.print(matcher.group());
 
-        someStr = "Hi! What are you doing? My email is box@gmail.com. Flat football feature futurama. My phone-number: +7905-464-74-64";
+        someStr = "+7905-464-74-64";
         // ?= опережающая проверка
         // для email
         // найти все предложения в тексте (начинающиеся с заглавной буквы, оканчиваются на ? . !)
@@ -64,7 +64,7 @@ public class RegExpress {
         // найти все слова (от 5 до 8 символов), начинающиеся на f
         regEx = "^f.*\b{5,8}";
         //номер телефона в формате +7xxx-xxx-xx-xx
-        regEx = "^+7([0-9]{3}(-)([0-9]){2}(-)([0-9]){2})";
+        regEx = "(\\+)\\d{4}-\\d{3}-74-64";
 
         pattern = Pattern.compile(regEx);
         matcher = pattern.matcher(someStr);
