@@ -8,6 +8,7 @@ public class Example1 {
         String text = "Hi? I'm Andrew. My email is andr@gmail.com. I'm from Spain. stoke@mail.ru is brothers email";
         Pattern search = Pattern.compile("\\w+@(mail|gmail)\\.(com|ru)");
         Matcher matcher = search.matcher(text);
+
         while (matcher.find()) {
             System.out.println(matcher.group());
             }
