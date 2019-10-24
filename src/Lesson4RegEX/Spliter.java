@@ -1,4 +1,4 @@
-package Lesson4;
+package Lesson4RegEX;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package Lesson3;
+package Lesson3String;
 
 //на гитхабе посмотреть в первом лесоне по свитчу нововведения
 

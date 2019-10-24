@@ -1,5 +1,4 @@
-package Lesson4;
-import java.util.Arrays;
+package Lesson4RegEX;
 
 public class FindBiggestWord{
     static String bigWord(String c) {
@@ -14,7 +13,10 @@ public class FindBiggestWord{
     }
 
     public static void main(String[] args) {
+        int c = (int)(java.lang.System.currentTimeMillis()*100);
         System.out.println(bigWord("aaa  requerments. a mmmmm!we!!!!!! p"));
+        int d = (int)(java.lang.System.currentTimeMillis()*100);
+        System.out.println("Время выполнения " + (d-c));
     }
 }
 
