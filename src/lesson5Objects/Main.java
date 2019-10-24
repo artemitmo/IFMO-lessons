@@ -42,7 +42,9 @@ public class Main {
         else if (bookName.equals(library.getBooks()[2].getTitle())){
             System.out.println(library.getInfo(2));
         }
-
+        else {
+            System.out.println("Книги нет в наличие или она недоступна");
+        }
 
         /*доделать методами
         на гитхабе лежат)
