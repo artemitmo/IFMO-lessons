@@ -45,9 +45,9 @@ public class Library {
         return returnBook;
     }
 
-    public String getInfo(int m){
-        return "Книга найдена. Название: " + getBooks()[m].getTitle()  +
-                " Автор: " + getBooks()[m].getTitle()  +
+    public String getInfo (int i){
+        return "Книга найдена. Название: " + getBooks()[i].getTitle()  +
+                " Автор: " + getBooks()[i].getTitle()  +
                 "Доступна в читальном зале/для выдачи на дом " +
                 "Для выдачи доступна/пока недоступна";
     }

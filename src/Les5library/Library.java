@@ -12,16 +12,24 @@ public class Library {
         }
     }
 
+    public Book[] getBooks() {
+        return books;
+    }
+
+    public void setBooks(Book[] books) {
+        this.books = books;
+    }
+
     // должна быть возможность взять книгу на дом, указав название
-    /*public Book takeHome(String title) {
-        Book returnBook = null;
-        return returnBook;
-    }*/
+    public Book takeHome(int i) {
+        getBooks()[i] = null;
+        return getBooks()[i];
+    }
 
-    public String getInfo(int m){
+    public String getInfo(int i){
 
-        return "Книга найдена. Название: " + getBooks()[m].getTitle()  +
-                " Автор: " + getBooks()[m].getTitle()  +
+        return "Книга найдена. Название: " + getBooks()[i].getTitle()  +
+                " Автор: " + getBooks()[i].getTitle()  +
                 ". Доступна в читальном зале/для выдачи на дом. " +
                 " Для выдачи доступна/пока недоступна";
     }
