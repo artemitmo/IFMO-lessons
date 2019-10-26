@@ -1,16 +1,16 @@
-package Les5library;
-import java.util.Arrays;
+package HomeWork.Les5library;
 
 public class Library {
-    private Book[] books = new Book[10];
-    public void addBook(Book... newBooks) { // в библиотеку можно добавить сразу несколько книг
-        for (int i = 0; i < this.books.length; i++) {
-            if (this.books[i] == null) {
-                System.arraycopy(newBooks, 0, this.books, i, newBooks.length);
-                break;
+        private Book[] books = new Book[10];
+        //прописать, что если больше массива, то ошибка
+        public void addBook(Book... newBooks) { // в библиотеку можно добавить сразу несколько книг
+            for (int i = 0; i < this.books.length; i++) {
+                if (this.books[i] == null) {
+                    System.arraycopy(newBooks, 0, this.books, i, newBooks.length);
+                    break;
+                }
             }
         }
-    }
 
     public Book[] getBooks() {
         return books;

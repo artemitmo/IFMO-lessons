@@ -1,4 +1,4 @@
-package Les5library;
+package HomeWork.Les5library;
 
 import java.util.Scanner;
 
