@@ -4,10 +4,12 @@ public class Library {
         private Book[] books = new Book[10];
         //прописать, что если больше массива, то ошибка
         public void addBook(Book... newBooks) { // в библиотеку можно добавить сразу несколько книг
+            if (this.books.length<=books.length){
             for (int i = 0; i < this.books.length; i++) {
                 if (this.books[i] == null) {
                     System.arraycopy(newBooks, 0, this.books, i, newBooks.length);
                     break;
+                }
                 }
             }
         }
