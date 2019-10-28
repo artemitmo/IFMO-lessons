@@ -16,6 +16,11 @@ abstract public class BattleUnit extends Unit implements AttackAble{
         this.attackScore = attackScore;
         this.health = health;
     }
+
+    @Override
+    public void escapeBattleField() {
+        System.out.println("BattleUnit покидает бой");
+    }
     //Base-class Unit. BattleUnit extends Unit
     //Наследование, инкапсуляция, полиморфизм, абстракция
     //Населедование extends, расширение функционала родительского класса без его изменения

@@ -23,7 +23,8 @@ abstract public class Unit implements RestAble {
     }
 
     public void setHealth(int health) {
-        this.health = health;
+        if (this.health>0){
+        this.health = health;}
     }
 
     public int getSpeed() {
@@ -31,7 +32,8 @@ abstract public class Unit implements RestAble {
     }
 
     public void setSpeed(int speed) {
-        this.speed = speed;
+        if (this.speed>0){
+        this.speed = speed;}
     }
 
     private boolean isAlive() {
