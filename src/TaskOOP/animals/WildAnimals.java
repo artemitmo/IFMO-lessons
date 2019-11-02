@@ -16,7 +16,7 @@ public class WildAnimals extends Animals {
         this.damage = damage;
     }
 
-   /* public int hunt (Pets prey) {
+  /*  public int hunt (Pets prey) {
         if (prey.getSpeed()<this.getSpeed()){
             System.out.println("Хищник догнал добычу ");
             this.prey.getHealth() -= this.getDamage();

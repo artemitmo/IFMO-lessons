@@ -22,6 +22,9 @@ public class Main {
         else if ("doctor".equals(userChoice)){
             battleUnit = new Doctor("Доктор", 2, 40, 5);
         }
+        else {
+            System.out.println("Такой персонаж отсутствует в списке для создания ");
+        }
         battleUnit.run();
         System.out.println("Ваш выбор " + battleUnit);
         //warrior knight doctor
