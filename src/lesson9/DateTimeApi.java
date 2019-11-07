@@ -1,6 +1,5 @@
 package lesson9;
 
-
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -39,6 +38,7 @@ public class DateTimeApi {
         for (LocalDate date: dates){
             System.out.println(date);// работает с 9й версии
         }*/
+
        long between = ChronoUnit.YEARS.between(parseDate, dateNow); // стоят в годах
         System.out.println(between); //разница между двумя датами
 
