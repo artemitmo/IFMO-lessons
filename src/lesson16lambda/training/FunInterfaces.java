@@ -4,11 +4,11 @@ import java.util.function.*;
 
 public class FunInterfaces {
     public static void main(String[] args) {
-        Predicate<Integer> pre = x -> x>15;
+        Predicate<Integer> pre = x -> x>15; //принимает 1 значение, возвращает boolean
         System.out.println("Predicate " + pre.test(16));
 
 
-        BinaryOperator<Integer> biO = (a, b) -> a*b;
+        BinaryOperator<Integer> biO = (a, b) -> a*b; //принимает 2 значения и возвращает 1 значение
         System.out.println("BinaryOperator " + biO.apply(15, 20));
 
         UnaryOperator<Integer> square = c -> c*c;
@@ -57,5 +57,12 @@ class User{
         this.name=n;
     }
 }*/
+        /*
+        Введите имя:
+Том
+Введите имя:
+Сэм
+Имя user1: Том
+Имя user2: Сэм*/
     }
 }

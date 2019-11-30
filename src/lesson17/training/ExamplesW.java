@@ -6,6 +6,9 @@ import java.util.Collections;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import lesson17.Employee;
+import lesson17.Employee.*;
+
 public class ExamplesW {
     public static void main(String[] args) {
       long count = IntStream.of(15, 26, 19, 17, 0, -2, -8).filter(value -> value<0).count();
@@ -24,6 +27,11 @@ citiesStream = citiesStream.filter(s->s.length()==6); // применяем фи
 citiesStream.forEach(s->System.out.println(s)); // выводим отфильтрованные строки на консоль*/
         Stream<String> citiesStream = Arrays.stream(new String[]{"Париж", "Лондон", "Мадрид"}) ;
         citiesStream.forEach(s->System.out.println(s)); // выводим все элементы массива
+
+        Stream <Employee> mapStream = Stream.of
+                (new Employee("Kir", "IBM", 1000, 25), new Employee("Sol", "Apple", 2000, 34));
+        mapStream.map(p -> p.getCompany()).forEach(System.out::println);
+
 
 
     }
