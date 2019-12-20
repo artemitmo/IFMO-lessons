@@ -1,18 +1,18 @@
-package Lesson10;
+package lesson10;
 
 public class Bus extends Transport {
-    private boolean wifi;
+    private boolean wiFi;
 
-    public Bus(String departureSt, String destSt, String num, boolean wifi) {
+    public Bus(String departureSt, String destSt, String num, boolean wiFi) {
         super(departureSt, destSt, num);
-        this.wifi = wifi;
+        this.wiFi = wiFi;
     }
 
-    public boolean isWiFi(){
-        return wifi;
+    public boolean isWiFi() {
+        return wiFi;
     }
 
-    public void setWifi(boolean wifi) {
-        this.wifi = wifi;
+    public void setWiFi(boolean wiFi) {
+        this.wiFi = wiFi;
     }
 }

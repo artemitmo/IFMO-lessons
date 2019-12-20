@@ -9,43 +9,63 @@ import java.util.stream.Collectors;
 
 public class DateTimeApi {
     public static void main(String[] args) {
-        //DateTime Api начиная с 8 версии
+        // DateTime Api начиная с 8 версии
         // потокобезопасны
-        //только работа с датой (число, месяц, год), текущая дата
-        LocalDate dateNow = LocalDate.now(); //возвращается текущая дата
+
+        // работа с датой
+        // текущая дата
+        LocalDate dateNow = LocalDate.now();
         System.out.println(dateNow);
 
-        LocalDate someData = LocalDate.of(2018, Month.OCTOBER, 20);
-        String strDate = "14/05/2017";
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d/MM/yyyy");
-        LocalDate parseDate = LocalDate.parse(strDate, dtf); //берет строчку и парсит ее по формату дтф
-        // 8 - d 08 -dd / MMMM - месяц (октября) ММ - месяц (10) / уууу - 2017 уу - 17*/
+        LocalDate someDate = LocalDate.of(2018, Month.OCTOBER, 20);
+
+            /*8 -d 08 - dd /
+            MMMM - месяц(октября) MM - месяц (10) /
+            yyyy - 2017 yy - 17*/
+        String strDate = "14 октября 2017"; // 2017-05-14
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d MMMM yyyy");
+
+        LocalDate parseDate = LocalDate.parse(strDate, dtf);
         System.out.println(parseDate);
-        System.out.println(parseDate.minusYears(1));
-        System.out.println(parseDate.minusMonths(1));
-        System.out.println(parseDate.minusDays(400));//отнимает дни
-        System.out.println(parseDate.plusWeeks(40));//прибавляет недели, если число с минусом, то обратка работает
+
+        System.out.println(parseDate.minusYears(-1));
+        System.out.println(parseDate.minusMonths(2));
+        System.out.println(parseDate.minusDays(400));
+
+        System.out.println(parseDate.plusDays(23));
+        System.out.println(parseDate.plusWeeks(2));
+        System.out.println(parseDate.plusMonths(7));
+        System.out.println(parseDate.plusYears(-4));
 
         DayOfWeek dayOfWeek = parseDate.getDayOfWeek();
         System.out.println(dayOfWeek);
-        boolean isAfter = parseDate.isAfter(dateNow); // аналогично isBefore
+
+        LocalDate ld = LocalDate.parse(strDate, dtf);
+
+        boolean isAfter = parseDate.isAfter(dateNow);
         System.out.println(isAfter);
+
+        boolean isBefore = parseDate.isBefore(dateNow);
+        System.out.println(isBefore);
 
         boolean isEqual = parseDate.isEqual(dateNow);
         System.out.println(isEqual);
 
-       /* List <LocalDate> dates = dateNow.datesUntil(LocalDate.parse("2020-03-01")).collect(Collectors.toList());
+        /*List<LocalDate> dates =
+                dateNow.datesUntil(LocalDate.parse("2020-03-01"))
+                        .collect(Collectors.toList());
         for (LocalDate date: dates){
-            System.out.println(date);// работает с 9й версии
+            System.out.println(date);
+            System.out.println(date.getDayOfWeek());
         }*/
 
-       long between = ChronoUnit.YEARS.between(parseDate, dateNow); // стоят в годах
-        System.out.println(between); //разница между двумя датами
+        long between = ChronoUnit.YEARS.between(parseDate, dateNow);
+        System.out.println(between);
 
         LocalTime currentTime = LocalTime.now();
-        System.out.println(currentTime); //все то же самое
+        System.out.println(currentTime);
 
-        LocalTime localTime1 = LocalTime.of(8, 20);
+        LocalTime localTime1 = LocalTime.of(7, 20);
         LocalTime localTime2 = LocalTime.of(22, 20);
 
         long btn1 = ChronoUnit.HOURS.between(localTime1, localTime2);
@@ -57,31 +77,52 @@ public class DateTimeApi {
         Set<String> allZone = ZoneId.getAvailableZoneIds();
         System.out.println(allZone);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMMM yyyy / HH:mm");
-        LocalDateTime localDateTime = LocalDateTime.of(2019, 11, 12,5, 23);
-        System.out.println(localDateTime);
+        DateTimeFormatter formatter =
+                DateTimeFormatter.ofPattern("dd MMMM yyyy / HH:mm");
+
+        LocalDateTime localDateTime =
+                LocalDateTime.of(2019, Month.NOVEMBER, 15,
+                        16, 20);
+        System.out.println(formatter.format(localDateTime));
 
         ZonedDateTime msk = localDateTime.atZone(ZoneId.of("Europe/Moscow"));
-        System.out.println(msk);
+        System.out.println(formatter.format(msk));
 
-        ZonedDateTime ny = msk.withZoneSameInstant(ZoneId.of("America/New_York")).plusHours(4);
+        ZonedDateTime ny =
+                msk.withZoneSameInstant(ZoneId.of("America/New_York"));
+        System.out.println(formatter.format(ny));
+        System.out.println(formatter.format(ny.plusHours(4).plusMinutes(20)));
 
         Date date = new Date();
         System.out.println(date);
         Date other = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy" + " HH:mm");
-        System.out.println(sdf.format(date)); //сравниваем, выводим
+
+        SimpleDateFormat sdf =
+                new SimpleDateFormat("dd MM yyyy HH:mm");
+        System.out.println(sdf.format(date));
         System.out.println(date.before(other));
         System.out.println(date.after(other));
         System.out.println(date.compareTo(other));
 
         Calendar calendar1 = new GregorianCalendar();
-        Calendar calendar2 = new GregorianCalendar(2016, Calendar.OCTOBER, 12);
-        calendar1.add(Calendar.DAY_OF_MONTH, 4);
-        calendar1.add(Calendar.DAY_OF_MONTH, -90);
+        Calendar calendar2 = new GregorianCalendar(
+                2016,
+                Calendar.OCTOBER,
+                12);
+        calendar2.add(Calendar.DAY_OF_MONTH, 4);
+        calendar2.add(Calendar.DAY_OF_MONTH, -90);
+
         System.out.println(calendar1.get(Calendar.MONTH));
-        System.out.println(calendar1.getTime()); //return Date
-        calendar1.getTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        //TODO: обратно
+        System.out.println(calendar1.getTime()); // return Date
+        LocalDate localDate = calendar1.getTime()
+                .toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+
+        // TODO: обратно
+
+
+
+
     }
 }

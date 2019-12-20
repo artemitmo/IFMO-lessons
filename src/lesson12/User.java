@@ -6,6 +6,12 @@ public class User {
 
     private Role role;
 
+    public User(String login, String pwd, Role role) {
+        this.login = login;
+        this.pwd = pwd;
+        this.role = role;
+    }
+
     public String getLogin() {
         return login;
     }
@@ -30,9 +36,16 @@ public class User {
         this.role = role;
     }
 
-    public User(String login, String pwd, Role role) {
-        this.login = login;
-        this.pwd = pwd;
-        this.role = role;
+    @Override
+    public String toString() {
+        return "User{" +
+                "login='" + login + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", role=" + role +
+                '}';
     }
+}
+
+enum Role {
+    USER, ADMIN
 }

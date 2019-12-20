@@ -16,7 +16,7 @@ public class MessageServer {
             System.out.println("Server started...");
             while (true){
                 Socket socket = serverSocket.accept();
-                connection = new Connection(socket); //передаем в коннекшн сокет
+                connection = new Connection(socket);
                 printMessage(connection.readMessage());
                 connection.sendMessage(new Message("server", "сообщение получено"));
             }

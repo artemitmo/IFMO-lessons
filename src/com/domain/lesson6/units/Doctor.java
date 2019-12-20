@@ -6,23 +6,12 @@ public class Doctor extends BattleUnit {
     }
 
     @Override
-    public String toString() {
-        return "Doctor{" +
-                "attackScore=" + attackScore +
-                ", name='" + name + '\'' +
-                ", health=" + health +
-                ", speed=" + speed +
-                '}';
-    }
-
-    @Override
     public void attack(Unit friend) {
-        System.out.println("Доктор подлечил " + friend.getName());
-        friend.health += this.attackScore;
+        System.out.println("Доктор увеличил очки здоровья " + friend.getName());
     }
 
     @Override
     public void rest() {
-        System.out.println("Пополняет запасы медикаментов");
+        System.out.println("Доктор отдыхает");
     }
 }

@@ -1,4 +1,4 @@
-package Lesson10;
+package lesson10;
 
 public class Transport {
     private String departureSt;
@@ -35,5 +35,3 @@ public class Transport {
         this.num = num;
     }
 }
-
-

@@ -4,7 +4,7 @@ public class Message {
     private String title;
     private String text;
 
-    public Message(String title, String text) throws Exception { // либо заворачиваем в трай-кетч, либо прописываем
+    public Message(String title, String text) throws CheckedException {
         setTitle(title);
         setText(text);
     }
@@ -13,10 +13,10 @@ public class Message {
         return title;
     }
 
-    public void setTitle(String title) throws Exception { //перебросили исключение в сигнатуру метода, на уровень выше
-        if (title == null || title.trim().length() < 3 ){
-            //throw new UncheckedException ("Длина менее 3 символов"); //создаем объект на основе своего класса и его выбросили
-            throw new CheckedException ("Длина менее 3 символов");
+    public void setTitle(String title) throws CheckedException {
+        if (title == null || title.trim().length() < 3) {
+//            throw new UncheckedException("Длина менее 3 символов");
+            throw new CheckedException("Длина менее 3 символов");
         }
         this.title = title;
     }
@@ -25,10 +25,10 @@ public class Message {
         return text;
     }
 
-    public void setText(String text) throws Exception  {  //перебросили исключение в сигнатуру метода
-        if (title == null || title.trim().length() < 10 ){
-            //throw new Exception ("Длина менее 10 символов");
-            throw new CheckedException ("Длина менее 10 символов");
+    public void setText(String text) throws CheckedException {
+        if (text == null || text.trim().length() < 10) {
+//            throw new UncheckedException("Длина менее 10 символов");
+            throw new CheckedException("Длина менее 10 символов");
         }
         this.text = text;
     }

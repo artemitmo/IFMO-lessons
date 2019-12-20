@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class LaunchStatisticExternalizable implements Externalizable {
     private int launchCount;

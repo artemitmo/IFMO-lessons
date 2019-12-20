@@ -9,46 +9,49 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Stream;
-//Создаем свой Коллектор, переопределяем методы интерфейса Коллектор
 
-public class MyCollector implements Collector<String, TreeSet<String>, String> {
-    //лямбда, определяющая создание контейнера для хранения промежуточных результатов
+public class MyCollector
+        implements Collector<String, TreeSet<String>, String> {
 
+    // лямбда, определяющая создание контейнера
+    // для хранения промежуточных результатов
     @Override
     public Supplier<TreeSet<String>> supplier() {
-        return TreeSet::new;//лямбда, определяющая создание контейнера для хранения промежуточных результатов
+        return TreeSet::new;
     }
 
+    // (обработка) + добавление промежуточного значения в контейнер
     @Override
-    public BiConsumer<TreeSet<String>, String> accumulator() {//(обработка) + добавление промежуточного результата
+    public BiConsumer<TreeSet<String>, String> accumulator() {
         return TreeSet::add;
     }
 
+    // объединение нескольких контейнеров, если stream будет параллельным
     @Override
-    public BinaryOperator<TreeSet<String>> combiner() {//объединение нескольких контейнеров, если стрим будет
-        //параллельным
-        return (treeset, strings) -> {//описываем как в один собирается
+    public BinaryOperator<TreeSet<String>> combiner() {
+        return (treeset, strings) -> {
             treeset.addAll(strings);
             return treeset;
         };
     }
 
-    @Override //прописываем основной функционал по обработке элементов
-    public Function<TreeSet<String>, String> finisher() {//финальное преобразование элементов контейнера
+    // финальное преобразование элементов контейнера
+    @Override
+    public Function<TreeSet<String>, String> finisher() {
         return strings -> strings.stream()
-                        .skip(1).sorted()
-                         .findFirst()
-                         .orElse("default");
-        //почему вернулось ф, пропустили первое значение
+                .skip(1)
+                .sorted()
+                .findFirst().orElse("default");
     }
 
+    // set с характеристиками контейнера
     @Override
     public Set<Characteristics> characteristics() {
         return EnumSet.of(Characteristics.CONCURRENT);
     }
 
     public static void main(String[] args) {
-        Stream<String> stringStream = Stream.of("f","e","z","x");
+        Stream<String> stringStream = Stream.of("f", "e", "z", "x");
         System.out.println(stringStream.collect(new MyCollector()));
     }
 }

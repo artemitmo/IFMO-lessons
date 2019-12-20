@@ -12,9 +12,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.Set;
 
-public class Server { //на сервере работает НИО, помимо основного, запущен 1 поток, остальная асинхранность достигается с помощтю каналов
-    //слушает входящие сообщения, создает соединения  с сокетами клиентов
-    //НИО полностью поддерживает ИО
+public class Server {
     public static void main(String[] args) {
         Server server = new Server();
         server.start();
@@ -29,14 +27,8 @@ public class Server { //на сервере работает НИО, помим�
         private static final int BUF_SIZE = 1024;
 
         private ByteBuffer byteBuffer;
-        private ServerSocketChannel serverChannel; //ждет входящих подключений
-        private Selector selector; //объекты, работающие с каналами, позволяют переключаться между каналами
-        //необходимо зарегистрировать канал в селекторе, селектор за ним будет следить
-        //событя в канале могут происходить следующие (селектор их ждет):
-        //connect - соединение, НОВОЕ ПОДКЛЮЧЕНИЕ OP_CONNECT
-        //accept - воспроизведение сокета OP_ACCEPT
-        //события read and write OP_READ | OP_WRITE
-
+        private ServerSocketChannel serverChannel;
+        private Selector selector;
 
         @Override
         protected void init() throws IOException {

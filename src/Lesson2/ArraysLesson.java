@@ -1,91 +1,108 @@
-package Lesson2;
+package lesson2;
+
 import java.util.Arrays;
 
-//В массиве хранятся данные одного типа
-//индекс - позиция элемента в массиве
 public class ArraysLesson {
     public static void main(String[] args) {
-        int[] arr; //более предпочтительный вариант, а так the same
+        // объявление переменной массива
+        int[] arr;
         int arr1[];
 
-        //array with 5 elements
+        // массив со значениями по-умолчанию из 5 элементов
         arr = new int[5];
         System.out.println(Arrays.toString(arr));
-        //размер массива изменять нельзя
-        System.out.println("Arrays size is " + arr.length);
 
-        //наполним массив значениями
-        int[] arr2 = {5, 16, 26, 73, -12};
-        //доступ к элементам массива
-        System.out.println(arr2[3]); //73
-        System.out.println(arr2[2 + 1]); //73
-        //System.out.println(arr2[14]);  IndexOutOfBoundsException
+        // размер массива изменить нельзя
+        System.out.println("Размер массива: " + arr.length);
 
-        arr2[2] = 15; //changes value
-        for (int i = 0; i <arr2.length ; i++) {
-            arr2[i]+=1;
+        // наполнение массива значениями при инициализации
+        int[] arr2 = {5, 67, 12, -12, 0, 1};
+
+        // доступ к элементам массива
+        System.out.println(arr2[3]); // -12
+        System.out.println(arr2[1+2]); // -12
+//        System.out.println(arr2[15]); //ArrayIndexOutOfBoundsException
+
+        arr2[1] = 853;
+        System.out.println(Arrays.toString(arr2));
+
+        for (int i = 0; i < arr2.length; i++) {
+            arr2[i] += 1;
         }
 
-        //копирование массива
+        // копирование массива
         int[] arr3 = {23, 78, 12};
-        int[] arr4 = arr3; //ссылка на тот же самый массив, но не копирование, касается в целом объектов
-        int[] cloneArr = arr3.clone(); //метод clone есть у всех объектов, тогда это новый массив
-        System.out.println(cloneArr.toString());
+        int[] arr4 = arr3;
+
+        int[] cloneArr = arr3.clone();
         System.out.println(Arrays.toString(cloneArr));
-        System.out.println(arr3.toString());
-        System.out.println(arr4.toString());
 
 
         int[] arr5 = new int[15];
-        System.arraycopy(arr3, 1, arr5, 3, 2); //с какого массива копируем, с какого элемента, в какой массив, с какого элемента, сколько элементов
+        System.arraycopy(arr3, 1, arr5, 3, 1);
         System.out.println(Arrays.toString(arr5));
 
-        int[] copyArr = Arrays.copyOf(arr3, 5); //из какого массива копируем и вводим длину нового массива
+        int[] copyArr = Arrays.copyOf(arr3, 6);
         System.out.println(Arrays.toString(copyArr));
 
-        arr3 = new int[] {15, 26, 18, 96, 16};
+//        int[] arr3 = {4, 78, 12};
+        arr3 = new int[]{2, 67, 123, 90, 1};
 
-        //перебор массива
-        for (int i = 0; i <arr3.length ; i++) {
-            arr3[i] *=2;
-            System.out.println(arr3[i]);
+        // перебор массива
+        for (int i = 0; i < arr3.length; i++) {
+            arr3[i] *= 2;
         }
         System.out.println(Arrays.toString(arr3));
 
-        //не меняется массив, переменная elem выводится
-        for (int elem: arr3
-             ) {
-            elem*= 2;
+        for (int elem: arr3){
+            elem *= 2;
             System.out.println(elem);
         }
+        System.out.println(Arrays.toString(arr3));
 
-        //сравнение массивов
-        arr3 = new int[] {2, 67, 18};
-        arr4 = new int[] {2, 67, 18};
-        System.out.println(Arrays.equals(arr3, arr4)); //сравниваем через метод класса Arrays, посмотреть с флотом и сравнивание многомерных массивов
-        // создать программу сравнения двумерных массивов
+        // сравнение массивов
+        arr3 = new int[]{2, 67, 123};
+        arr4 = new int[]{2, 67, 123};
 
-        //сортировка массивов по возрастанию
-        arr4 = new int[] {12, 64, 73, 84, 92};
-        Arrays.sort(arr3); //сортирует либо объект целиком, либо часть массива (arr3, 3, 5) индексы от и дож
-        // быстрая сортировка, сложность - O (n log n)
-        //выбирается опорный элемент, массив делится на 2 части, сравнивается больше и меньше, затем еще раз делится на 2, до тех пор пока нечего будет делить
-        //алгоритмы сортировки почитать, какие работают быстрее, какие медленнеее на Java - вручную, например
-        //сортировка пузырьком и тд.
+        System.out.println(Arrays.equals(arr3, arr4));
+
+        // сортировка массивов
+        arr4 = new int[]{2, 67, 123, -304, 0, 13};
+        Arrays.sort(arr4); // Arrays.sort(arr4, 1, 5);
+        // быстрая сортировка, сложность - О(n log n) // TODO: ПОСМОТРЕТЬ РЕАЛИЗАЦИЮ АЛГОРИТМА
+
+        // бинарный поиск, сложность O(log n) // TODO: ПОСМОТРЕТЬ РЕАЛИЗАЦИЮ АЛГОРИТМА
+        arr4 = new int[]{3, 5, 6, 7, 10, 34};
+        System.out.println(Arrays.binarySearch(arr4, 6));
+        System.out.println(Arrays.binarySearch(arr4, 23));
+
+
+
         /*
-         0 (1) - константное время. Алгоритм будет выполняться за определенное время, 100 страниц в книге, но за час читает человек 50 и все
-         0 (log n ) - логарифмическая сложность. С увеличением элементов - время выполнения уменьшается.
-         считаются высокоэффективными
+        * O(1) - константное время
+        * O(log n) - логарифмическая сложность
+        * считаются высокоэффективными
+        * O(n) - линейная сложность
+        * O(n log n) - квазилогарифмическая сложность
+        * */
 
-         O (n) - линейная сложность , время возрастает с увеличением входящих данных
-         О (n log n) - квазилогарифмическая сложность
-         расположить в порядке возрастания=)
-         */
 
-        //бинарный поиск
-        arr3 = new int[]{ 2, 7, 8, 16, 82};
-        System.out.println(Arrays.binarySearch(arr3, 7)); // ищет элемент в массиве, возвращает либо индекс, либо позицию +1 со знаком минус
-        System.out.println(Arrays.binarySearch(arr3, 6)); // ищет элемент в массиве, возвращает либо индекс, либо позицию +1 со знаком минус, если не находит
+
+        // 1. Написать программу перевода числа из 10 системы счисления
+        // в 2 систему счисления
+
+        // 2. Написать программу перевода числа из 10 системы счисления
+        // в 16 систему счисления
+
+        /*Дан массив целых чисел.
+        Массив не отсортирован, числа могут повторяться.
+        Необходимо найти в данном массиве такие два числа n и m,
+        чтобы их сумма была равна 7.
+        Например, 2 + 5 = 7, 6 + 1 = 7, -2 + 9 = 7
+        * */
+
+
+
 
     }
 }

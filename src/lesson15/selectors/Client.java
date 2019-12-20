@@ -13,14 +13,14 @@ public class Client {
         Socket socket = new Socket();
         socket.connect(new InetSocketAddress("localhost", 12345));
 
-        new Thread(new Receiver(socket)).start(); //2 потока
-        new Thread(new Sender(socket)).start();   //2 потока
+        new Thread(new Receiver(socket)).start();
+        new Thread(new Sender(socket)).start();
     }
 
     private static class Receiver extends Worker{
         private InputStream in;
-        private Socket socket; //используют сокет соединения
-        private byte[] buf; //массив байтов
+        private Socket socket;
+        private byte[] buf;
 
         public Receiver(Socket socket) {
             this.socket = socket;

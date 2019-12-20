@@ -1,8 +1,8 @@
 package com.domain.lesson6.units;
 
-abstract public class Unit implements RestAble {
-    protected String name; //модификатор protected - доступ внутри класса и в классах-наследниках
-    protected int health;  //когда не указано, то доступность внутри пакета
+abstract public class Unit implements RestAble{
+    protected String name;
+    protected int health;
     protected int speed;
 
     public Unit(String name, int speed) {
@@ -23,8 +23,7 @@ abstract public class Unit implements RestAble {
     }
 
     public void setHealth(int health) {
-        if (this.health>0){
-        this.health = health;}
+        this.health = health;
     }
 
     public int getSpeed() {
@@ -32,15 +31,14 @@ abstract public class Unit implements RestAble {
     }
 
     public void setSpeed(int speed) {
-        if (this.speed>0){
-        this.speed = speed;}
+        this.speed = speed;
     }
 
-    private boolean isAlive() {
-        return health>0;
+    public boolean isAlive(){
+        return health > 0;
     }
 
     public void run(){
-        System.out.println("Unit are moving with speed " + speed);
+        System.out.println("Юнит перемещается со скоростью " + speed);
     }
 }
